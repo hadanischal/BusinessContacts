@@ -10,7 +10,7 @@ import UIKit
 
 class ContactsViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
-    fileprivate let itemsPerRowPortrait: CGFloat = 2
+    fileprivate let itemsPerRowPortrait: CGFloat = 1
     fileprivate let itemsPerRowLandscape: CGFloat = 2
 
     fileprivate let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
@@ -104,10 +104,16 @@ extension ContactsViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        var itemsPerRow = itemsPerRowPortrait
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            itemsPerRow = itemsPerRowPortrait
+        }else{
+           itemsPerRow = itemsPerRowLandscape
+        }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        let heightPerItem = widthPerItem + 21
+        let heightPerItem = CGFloat(200.00) //(view.frame.height - 21) / 2
         
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
