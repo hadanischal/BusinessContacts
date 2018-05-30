@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,7 +58,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderUser" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-ef-mmg">
+                                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-ef-mmg">
                                                             <rect key="frame" x="15" y="30.666666666666671" width="100" height="100.00000000000001"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="fcl-dW-9ZE"/>
@@ -121,127 +120,11 @@
                     <navigationItem key="navigationItem" id="jNR-c2-jpu"/>
                     <connections>
                         <outlet property="collectionView" destination="Z8y-zg-jgm" id="USQ-Be-Kji"/>
-                        <segue destination="KYv-yf-Oes" kind="show" identifier="toDetailViewController" id="6cf-fS-P2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNN-Pw-EbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="815.20000000000005" y="-102.09895052473765"/>
-        </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="RK5-hb-U0a">
-            <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="KYv-yf-Oes" customClass="DetailViewController" customModule="BusinessContacts" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="App-re-CXV"/>
-                        <viewControllerLayoutGuide type="bottom" id="YXc-wb-oMI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m7z-P9-QXM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cyi-Dp-xwH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LandscapeTableViewCell" rowHeight="167" id="wmS-2q-u2J" customClass="LandscapeTableViewCell" customModule="BusinessContacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="167"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wmS-2q-u2J" id="YTh-gl-Jbm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="166.66666666666666"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="CIA-7E-tJ7">
-                                                    <rect key="frame" x="8" y="8" width="150" height="150"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="pBg-HW-pf7"/>
-                                                        <constraint firstAttribute="width" constant="150" id="yzv-F3-NWc"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zra-yl-1MP">
-                                                    <rect key="frame" x="166" y="8" width="240" height="151"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="6S7-6A-0j7"/>
-                                                <constraint firstAttribute="bottom" secondItem="CIA-7E-tJ7" secondAttribute="bottom" constant="8" id="GPO-Xg-yhD"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="leading" secondItem="CIA-7E-tJ7" secondAttribute="trailing" constant="8" id="Gtm-qa-IrZ"/>
-                                                <constraint firstItem="CIA-7E-tJ7" firstAttribute="leading" secondItem="YTh-gl-Jbm" secondAttribute="leading" constant="8" id="UMu-rr-QyO"/>
-                                                <constraint firstAttribute="bottom" secondItem="Zra-yl-1MP" secondAttribute="bottom" constant="8" id="hLm-T9-Mph"/>
-                                                <constraint firstItem="Zra-yl-1MP" firstAttribute="top" secondItem="YTh-gl-Jbm" secondAttribute="top" constant="8" id="mbG-8U-GU1"/>
-                                                <constraint firstAttribute="trailing" secondItem="Zra-yl-1MP" secondAttribute="trailing" constant="8" id="nrf-eP-yye"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="descriptionLabel" destination="Zra-yl-1MP" id="NH5-xb-HgY"/>
-                                            <outlet property="thumbnailImage" destination="CIA-7E-tJ7" id="p5t-ol-QuR"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PortraitTableViewCell" rowHeight="417" id="22A-ez-fz7" customClass="PortraitTableViewCell" customModule="BusinessContacts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="195" width="414" height="417"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="22A-ez-fz7" id="ZwS-Sp-if6">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="416.66666666666669"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="StC-pC-eUW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="320" id="N5t-XN-fTr"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gf-oH-9mZ">
-                                                    <rect key="frame" x="25" y="328" width="364" height="68"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49" id="1NV-h5-Z7f"/>
-                                                    </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="6gf-oH-9mZ" firstAttribute="top" secondItem="StC-pC-eUW" secondAttribute="bottom" constant="8" id="14n-ec-mtL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="6gf-oH-9mZ" secondAttribute="bottom" constant="10" id="DeA-Pd-gyw"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="6gf-oH-9mZ" secondAttribute="trailing" constant="10" id="L8z-CO-uKZ"/>
-                                                <constraint firstItem="6gf-oH-9mZ" firstAttribute="leading" secondItem="ZwS-Sp-if6" secondAttribute="leadingMargin" constant="10" id="PGh-Mg-LBA"/>
-                                                <constraint firstItem="StC-pC-eUW" firstAttribute="leading" secondItem="ZwS-Sp-if6" secondAttribute="leading" id="Shn-vo-4a9"/>
-                                                <constraint firstAttribute="trailing" secondItem="StC-pC-eUW" secondAttribute="trailing" id="ndC-6V-oYI"/>
-                                                <constraint firstItem="StC-pC-eUW" firstAttribute="top" secondItem="ZwS-Sp-if6" secondAttribute="top" id="sOP-w8-2GZ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="bannerImage" destination="StC-pC-eUW" id="atM-0e-gRX"/>
-                                            <outlet property="descriptionLabel" destination="6gf-oH-9mZ" id="0dK-Iu-Y8g"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="KYv-yf-Oes" id="lXH-G8-0kz"/>
-                                    <outlet property="delegate" destination="KYv-yf-Oes" id="1GQ-ZP-1Bp"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="YXc-wb-oMI" firstAttribute="top" secondItem="cyi-Dp-xwH" secondAttribute="bottom" id="J4L-sq-Eh3"/>
-                            <constraint firstItem="cyi-Dp-xwH" firstAttribute="top" secondItem="m7z-P9-QXM" secondAttribute="top" id="k17-VS-Lq8"/>
-                            <constraint firstItem="cyi-Dp-xwH" firstAttribute="leading" secondItem="m7z-P9-QXM" secondAttribute="leading" id="uCB-uN-TJr"/>
-                            <constraint firstAttribute="trailing" secondItem="cyi-Dp-xwH" secondAttribute="trailing" id="xMz-Z5-aH7"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="cyi-Dp-xwH" id="ddb-gs-T1K"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ltg-11-k0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1767.2" y="-102.99850074962519"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FfR-AX-B57">
@@ -264,6 +147,5 @@
     </scenes>
     <resources>
         <image name="placeholder" width="75" height="75"/>
-        <image name="placeholderUser" width="60" height="60"/>
     </resources>
 </document>
