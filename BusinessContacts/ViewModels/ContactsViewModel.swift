@@ -27,7 +27,9 @@ class ContactsViewModel {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let converter) :
-                    self.dataSource?.data.value = converter
+                    var contacts = converter
+                    contacts.sort(by: ContactsModel.Comparison.firstLastAscending)
+                    self.dataSource?.data.value = contacts
                     completion?(Result.success(true))
                     break
                 case .failure(let error) :
@@ -41,4 +43,5 @@ class ContactsViewModel {
     
 }
 
+ 
 
