@@ -1,8 +1,8 @@
 //
 //  String.swift
-//  iOSProficiencyExercise
+//  BusinessContacts
 //
-//  Created by Nischal Hada on 5/24/18.
+//  Created by Nischal Hada on 5/30/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 

@@ -1,8 +1,8 @@
 //
 //  DetailViewController.swift
-//  iOSProficiencyExercise
+//  BusinessContacts
 //
-//  Created by Nischal Hada on 5/25/18.
+//  Created by Nischal Hada on 5/30/18.
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 
@@ -110,7 +110,7 @@ extension DetailViewController {
     func loadImagesForOnscreenRows() {
         let visiblePaths = tableView.indexPathsForVisibleRows ?? [IndexPath]()
         for indexPath in visiblePaths {
-            let cell = tableView(self.tableView, cellForRowAt: indexPath)
+           // let cell = tableView(self.tableView, cellForRowAt: indexPath)
           //  imageHelper.updateImageForTableViewCell(cell, inTableView: tableView, imageURL: data.imageRef, atIndexPath: indexPath)
         }
     }

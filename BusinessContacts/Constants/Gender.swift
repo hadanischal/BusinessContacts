@@ -1,5 +1,5 @@
 //
-//  Result.swift
+//  Gender.swift
 //  BusinessContacts
 //
 //  Created by Nischal Hada on 5/30/18.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum Result<T, E: Error> {
-    case success(T)
-    case failure(E)
+enum Gender {
+    static let male = "Male"
+    static let female = "Female"
 }
+
+

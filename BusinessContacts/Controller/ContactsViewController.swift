@@ -10,10 +10,15 @@ import UIKit
 
 class ContactsViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
-    fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate let itemsPerRowPortrait: CGFloat = 2
+    fileprivate let itemsPerRowLandscape: CGFloat = 2
+
+    fileprivate let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
     
+    var currentDeviceOrientation: UIDeviceOrientation = .unknown
     private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
+    var segmentedController: UISegmentedControl!
     
     fileprivate var service : ContactsService! = ContactsService()
     let dataSource = ContactsDataSource()
@@ -21,7 +26,7 @@ class ContactsViewController: UIViewController {
         let viewModel = ContactsViewModel(service: service, dataSource: dataSource)
         return viewModel
     }()
-
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         self.CollectionViewSetUp()
@@ -30,8 +35,29 @@ class ContactsViewController: UIViewController {
             self?.collectionView.reloadData()
         }
         self.setupUIRefreshControl()
+        self.setupUISegmentedControl()
         self.serviceCall()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        self.currentDeviceOrientation = UIDevice.current.orientation
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        if UIDevice.current.isGeneratingDeviceOrientationNotifications {
+            UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        }
+    }
+    
+    @objc func deviceDidRotate(notification: NSNotification) {
+        self.currentDeviceOrientation = UIDevice.current.orientation
+        self.collectionView.reloadData()
     }
     
     func setupUIRefreshControl(){
@@ -39,17 +65,19 @@ class ContactsViewController: UIViewController {
         self.collectionView.addSubview(refreshControl)
         
     }
+    func setupUISegmentedControl(){
+        let items = ["All", "Favourites"]
+        segmentedController = UISegmentedControl(items: items)
+        let paddingSpace = segmentedInsets.left * 2
+        let availableWidth = view.frame.width - paddingSpace
+        segmentedController.frame =  CGRect(x: segmentedInsets.left, y: segmentedInsets.top, width: availableWidth, height: segmentedController.frame.height)
+        navigationItem.titleView = segmentedController
+    }
+    
     @objc func serviceCall() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             self.viewModel.fetchServiceCall { result in
-                //                switch result {
-                //                case .success :
-                //                    self.title = self.viewModel.title
-                //                    break
-                //                case .failure :
-                //                    break
-                //                }
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }

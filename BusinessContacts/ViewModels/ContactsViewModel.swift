@@ -25,18 +25,16 @@ class ContactsViewModel {
         }
         service.fetchConverter { result in
             DispatchQueue.main.async {
-                print(result)
-                //                switch result {
-                //                case .success(let converter) :
-                //                    self.dataSource?.data.value = converter.rows
-                //                    self.title = converter.title
-                //                    completion?(Result.success(true))
-                //                    break
-                //                case .failure(let error) :
-                //                    print("Parser error \(error)")
-                //                    completion?(Result.failure(error))
-                //                    break
-                //                }
+                switch result {
+                case .success(let converter) :
+                    self.dataSource?.data.value = converter
+                    completion?(Result.success(true))
+                    break
+                case .failure(let error) :
+                    print("Parser error \(error)")
+                    completion?(Result.failure(error))
+                    break
+                }
             }
         }
     }

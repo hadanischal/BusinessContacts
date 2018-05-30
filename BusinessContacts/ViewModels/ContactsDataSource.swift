@@ -11,6 +11,9 @@ import UIKit
 
 class GenericDataSource<T> : NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
+    fileprivate let portraitReuseIdentifier = "PortraitCollectionViewCell"
+    fileprivate let landscapeReuseIdentifier = "LandscapeCollectionViewCell"
+    
 }
 
 class ContactsDataSource : GenericDataSource<ContactsModel>, UICollectionViewDataSource {
@@ -24,10 +27,10 @@ class ContactsDataSource : GenericDataSource<ContactsModel>, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
-//        let feedsValue = self.data.value[indexPath.row]
-//        cell.feedsValue = feedsValue
-//        ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitCollectionViewCell
+        let feedsValue = self.data.value[indexPath.row]
+        cell.contactsValue = feedsValue
+        // ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
         return cell
     }
 }

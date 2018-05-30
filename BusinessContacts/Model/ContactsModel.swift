@@ -11,16 +11,16 @@ import Foundation
 var util: Util { return Util() }
 
 struct ContactsModel {
-    let email: String!
     let first_name: String!
     let last_name: String!
+    let email: String!
     let gender: String!
     let id: AnyObject!
     
     init(dictionary: [String: Any]) {
-        self.email = util.filterNil(dictionary["email"] as AnyObject) as! String
         self.first_name = util.filterNil(dictionary["first_name"] as AnyObject) as! String
         self.last_name = util.filterNil(dictionary["last_name"] as AnyObject) as! String
+        self.email = util.filterNil(dictionary["email"] as AnyObject) as! String
         self.gender = util.filterNil(dictionary["gender"] as AnyObject) as! String
         self.id = util.filterNil(dictionary["id"] as AnyObject)
     }
