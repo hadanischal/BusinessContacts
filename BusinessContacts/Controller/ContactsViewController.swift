@@ -57,6 +57,7 @@ class ContactsViewController: UIViewController {
     @objc func deviceDidRotate(notification: NSNotification) {
         self.currentDeviceOrientation = UIDevice.current.orientation
         self.collectionView.reloadData()
+        self.setupUISegmentedControl()
     }
     
     func setupUIRefreshControl(){
