@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol Utility{
-    func filterNil(_ value : AnyObject?) -> AnyObject?
+protocol Utility {
+    func filterNil(_ value: AnyObject?) -> AnyObject?
 }
 
 class Util {
-    
+
 }
 
 extension Util: Utility {
-    func filterNil(_ value : AnyObject?) -> AnyObject? {
+    func filterNil(_ value: AnyObject?) -> AnyObject? {
         if value is NSNull || value == nil {
             return "" as AnyObject
         } else {
@@ -27,7 +27,3 @@ extension Util: Utility {
 }
 
 //    object.feature = nullToNil(dict["feature"])
-
-
-
-

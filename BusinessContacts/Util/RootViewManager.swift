@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ViewManagers{
+protocol ViewManagers {
     func rootView() -> UIViewController
 }
 
@@ -21,9 +21,7 @@ extension RootViewManager: ViewManagers {
         let controller: ContactsViewController = storyboard.instantiateViewController(withIdentifier: "ContactsViewController") as! ContactsViewController
         let navigationController = UINavigationController(rootViewController: controller)
         return navigationController
-        
+
     }
-    
+
 }
-
-

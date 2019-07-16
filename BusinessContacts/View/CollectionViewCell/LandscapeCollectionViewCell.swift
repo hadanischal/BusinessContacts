@@ -14,8 +14,7 @@ class LandscapeCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var emailLabel: UILabel?
 
-    
-    var contactsValue : ContactsModel? {
+    var contactsValue: ContactsModel? {
         didSet {
             guard let contacts = contactsValue else {
                 return
@@ -25,12 +24,11 @@ class LandscapeCollectionViewCell: UICollectionViewCell {
 
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
         self.profileImage?.contentMode =   UIViewContentMode.scaleAspectFit
      }
-    
-    
+
 }

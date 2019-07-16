@@ -13,23 +13,23 @@ class PortraitCollectionViewCell: UICollectionViewCell {
     @IBOutlet var profileImage: UIImageView?
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var emailLabel: UILabel?
-    
-    var contactsValue : ContactsModel? {
+
+    var contactsValue: ContactsModel? {
         didSet {
             guard let contacts = contactsValue else {
                 return
             }
             nameLabel?.text = contacts.fullname()
             emailLabel?.text = contacts.email
-            if contacts.gender == Gender.male{
+            if contacts.gender == Gender.male {
                 profileImage?.image = #imageLiteral(resourceName: "avatarMale")
-            }else{
+            } else {
                 profileImage?.image = #imageLiteral(resourceName: "avatarFemale")
             }
-            
+
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.backgroundColor = ThemeColor.white
@@ -38,6 +38,5 @@ class PortraitCollectionViewCell: UICollectionViewCell {
         self.backgroundView?.borderColor = ThemeColor.dimBlackColor
         self.profileImage?.contentMode =   UIViewContentMode.scaleAspectFit
      }
-    
-    
+
 }
