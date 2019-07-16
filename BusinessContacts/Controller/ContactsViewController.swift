@@ -42,13 +42,13 @@ class ContactsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
         self.currentDeviceOrientation = UIDevice.current.orientation
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         if UIDevice.current.isGeneratingDeviceOrientationNotifications {
             UIDevice.current.endGeneratingDeviceOrientationNotifications()
         }
@@ -61,7 +61,7 @@ class ContactsViewController: UIViewController {
     }
 
     func setupUIRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControl.Event.valueChanged)
         self.collectionView.addSubview(refreshControl)
 
     }
@@ -91,7 +91,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 
     func CollectionViewSetUp() {
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         self.collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0 //0.0
@@ -104,7 +104,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemsPerRow = itemsPerRowPortrait
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        if UIDevice.current.orientation.isPortrait {
             itemsPerRow = itemsPerRowPortrait
         } else {
            itemsPerRow = itemsPerRowLandscape

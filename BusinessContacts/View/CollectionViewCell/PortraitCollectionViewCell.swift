@@ -36,7 +36,7 @@ class PortraitCollectionViewCell: UICollectionViewCell {
         self.bagroundView.backgroundColor = ThemeColor.white
         self.bagroundView.borderWidth = 1
         self.backgroundView?.borderColor = ThemeColor.dimBlackColor
-        self.profileImage?.contentMode =   UIViewContentMode.scaleAspectFit
+        self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
 
 }
