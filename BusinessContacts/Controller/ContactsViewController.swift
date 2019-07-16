@@ -9,27 +9,25 @@
 import UIKit
 
 class ContactsViewController: UIViewController {
-    fileprivate let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
-    fileprivate let itemsPerRowPortrait: CGFloat = 1
-    fileprivate let itemsPerRowLandscape: CGFloat = 2
-    fileprivate let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
+    private let sectionInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+    private let itemsPerRowPortrait: CGFloat = 1
+    private let itemsPerRowLandscape: CGFloat = 2
+    private let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
 
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
     private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
     var segmentedController: UISegmentedControl!
 
-    fileprivate var service: ContactsService! = ContactsService()
     let dataSource = ContactsDataSource()
-    lazy var viewModel: ContactsViewModel = {
-        let viewModel = ContactsViewModel(service: service, dataSource: dataSource)
-        return viewModel
-    }()
+    private var viewModel: ContactsViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.CollectionViewSetUp()
         self.collectionView.dataSource = self.dataSource
+
+        self.viewModel = ContactsViewModel(dataSource: dataSource)
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
         }
@@ -77,7 +75,7 @@ class ContactsViewController: UIViewController {
     @objc func serviceCall() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            self.viewModel.fetchServiceCall { _ in
+            self.viewModel?.fetchServiceCall { _ in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
@@ -112,7 +110,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        let heightPerItem = CGFloat(200.00)
+        let heightPerItem = CGFloat(150.00)
 
         return CGSize(width: widthPerItem, height: heightPerItem)
     }

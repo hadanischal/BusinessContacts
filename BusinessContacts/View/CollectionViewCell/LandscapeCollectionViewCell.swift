@@ -19,9 +19,8 @@ class LandscapeCollectionViewCell: UICollectionViewCell {
             guard let contacts = contactsValue else {
                 return
             }
-            nameLabel?.text = contacts.first_name
+            nameLabel?.text = "\(contacts.first_name) \(contacts.last_name)"
             emailLabel?.text = contacts.email
-
         }
     }
 
@@ -30,5 +29,4 @@ class LandscapeCollectionViewCell: UICollectionViewCell {
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
         self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
-
 }

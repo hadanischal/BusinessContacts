@@ -8,13 +8,14 @@
 
 import Foundation
 
-protocol ContactsServiceProtocol: class {
+protocol ContactsServiceProtocol {
     func fetchConverter(_ completion: @escaping ((Result<[ContactsModel], ErrorResult>) -> Void))
 }
 
 final class ContactsService: RequestHandler, ContactsServiceProtocol {
 
-    let endpoint = "https://gist.githubusercontent.com/pokeytc/e8c52af014cf80bc1b217103bbe7e9e4/raw/4bc01478836ad7f1fb840f5e5a3c24ea654422f7/contacts.json"
+    let endpoint = "https://gist.githubusercontent.com/hadanischal/db18a2029d898600cc8e5c4604478750/raw/2d746828c92165919930613839961d0b3ee61d7a/contacts.json"
+
     var task: URLSessionTask?
     func fetchConverter(_ completion: @escaping ((Result<[ContactsModel], ErrorResult>) -> Void)) {
         self.cancelFetchCurrencies()

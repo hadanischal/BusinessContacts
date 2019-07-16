@@ -15,7 +15,6 @@
 		AF17F7D420BE769A003D82B1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F7A520BE7699003D82B1 /* String.swift */; };
 		AF17F7D520BE769A003D82B1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F7A720BE7699003D82B1 /* Reachability.swift */; };
 		AF17F7D620BE769A003D82B1 /* RootViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F7A820BE7699003D82B1 /* RootViewManager.swift */; };
-		AF17F7D720BE769A003D82B1 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F7A920BE7699003D82B1 /* Util.swift */; };
 		AF17F7D820BE769A003D82B1 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F7AA20BE7699003D82B1 /* ImageHelper.swift */; };
 		AF17F7DB20BE769A003D82B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF17F7AF20BE7699003D82B1 /* LaunchScreen.storyboard */; };
 		AF17F7DC20BE769A003D82B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF17F7B020BE7699003D82B1 /* Main.storyboard */; };
@@ -41,6 +40,7 @@
 		AF49B6A620BEA2EE00B01214 /* PortraitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */; };
 		AF49B6A820BEA30000B01214 /* LandscapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49B6A720BEA30000B01214 /* LandscapeCollectionViewCell.swift */; };
 		AF7069CA22DDF2770078D700 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF7069C922DDF2770078D700 /* .swiftlint.yml */; };
+		AF7069CE22DDFA560078D700 /* ContactsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */; };
 		AFCA200B20BE883500E5C147 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA200A20BE883500E5C147 /* ContactsViewController.swift */; };
 		AFCA200D20BE8A6C00E5C147 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA200C20BE8A6C00E5C147 /* ContactsViewModel.swift */; };
 		AFCA200F20BE8A8500E5C147 /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA200E20BE8A8500E5C147 /* ContactsDataSource.swift */; };
@@ -87,7 +87,6 @@
 		AF17F7A520BE7699003D82B1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF17F7A720BE7699003D82B1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AF17F7A820BE7699003D82B1 /* RootViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewManager.swift; sourceTree = "<group>"; };
-		AF17F7A920BE7699003D82B1 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		AF17F7AA20BE7699003D82B1 /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		AF17F7AF20BE7699003D82B1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF17F7B020BE7699003D82B1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF49B6A720BEA30000B01214 /* LandscapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7069C922DDF2770078D700 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelProtocol.swift; sourceTree = "<group>"; };
 		AFCA200A20BE883500E5C147 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		AFCA200C20BE8A6C00E5C147 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		AFCA200E20BE8A8500E5C147 /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 			children = (
 				AF17F7A720BE7699003D82B1 /* Reachability.swift */,
 				AF17F7A820BE7699003D82B1 /* RootViewManager.swift */,
-				AF17F7A920BE7699003D82B1 /* Util.swift */,
 				AF17F7AA20BE7699003D82B1 /* ImageHelper.swift */,
 			);
 			path = Util;
@@ -302,6 +301,7 @@
 		AF17F7BC20BE769A003D82B1 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */,
 				AFCA200C20BE8A6C00E5C147 /* ContactsViewModel.swift */,
 				AFCA200E20BE8A8500E5C147 /* ContactsDataSource.swift */,
 			);
@@ -604,10 +604,10 @@
 				AFCA200D20BE8A6C00E5C147 /* ContactsViewModel.swift in Sources */,
 				AF17F7EC20BE769A003D82B1 /* RequestService.swift in Sources */,
 				AFCA200B20BE883500E5C147 /* ContactsViewController.swift in Sources */,
+				AF7069CE22DDFA560078D700 /* ContactsViewModelProtocol.swift in Sources */,
 				AF31FA1F20BECE31007F88B2 /* UIView.swift in Sources */,
 				AF17F7D420BE769A003D82B1 /* String.swift in Sources */,
 				AF31FA2120BED8CD007F88B2 /* Gender.swift in Sources */,
-				AF17F7D720BE769A003D82B1 /* Util.swift in Sources */,
 				AF17F77920BE6434003D82B1 /* BusinessContacts.xcdatamodeld in Sources */,
 				AF17F7D620BE769A003D82B1 /* RootViewManager.swift in Sources */,
 				AF17F7EB20BE769A003D82B1 /* ImageManager.swift in Sources */,
