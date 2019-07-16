@@ -13,20 +13,20 @@ class ContactsViewController: UIViewController {
     fileprivate let itemsPerRowPortrait: CGFloat = 1
     fileprivate let itemsPerRowLandscape: CGFloat = 2
     fileprivate let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
-    
+
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
     private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
     var segmentedController: UISegmentedControl!
-    
-    fileprivate var service : ContactsService! = ContactsService()
+
+    fileprivate var service: ContactsService! = ContactsService()
     let dataSource = ContactsDataSource()
-    lazy var viewModel : ContactsViewModel = {
+    lazy var viewModel: ContactsViewModel = {
         let viewModel = ContactsViewModel(service: service, dataSource: dataSource)
         return viewModel
     }()
-    
-    override func viewDidLoad(){
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.CollectionViewSetUp()
         self.collectionView.dataSource = self.dataSource
@@ -36,16 +36,16 @@ class ContactsViewController: UIViewController {
         self.setupUIRefreshControl()
         self.setupUISegmentedControl()
         self.serviceCall()
-        
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         self.currentDeviceOrientation = UIDevice.current.orientation
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -53,19 +53,19 @@ class ContactsViewController: UIViewController {
             UIDevice.current.endGeneratingDeviceOrientationNotifications()
         }
     }
-    
+
     @objc func deviceDidRotate(notification: NSNotification) {
         self.currentDeviceOrientation = UIDevice.current.orientation
         self.collectionView.reloadData()
         self.setupUISegmentedControl()
     }
-    
-    func setupUIRefreshControl(){
+
+    func setupUIRefreshControl() {
         refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControlEvents.valueChanged)
         self.collectionView.addSubview(refreshControl)
-        
+
     }
-    func setupUISegmentedControl(){
+    func setupUISegmentedControl() {
         let items = ["All", "Favourites"]
         segmentedController = UISegmentedControl(items: items)
         let paddingSpace = segmentedInsets.left * 2
@@ -73,11 +73,11 @@ class ContactsViewController: UIViewController {
         segmentedController.frame =  CGRect(x: segmentedInsets.left, y: segmentedInsets.top, width: availableWidth, height: segmentedController.frame.height)
         navigationItem.titleView = segmentedController
     }
-    
+
     @objc func serviceCall() {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            self.viewModel.fetchServiceCall { result in
+            self.viewModel.fetchServiceCall { _ in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
@@ -85,12 +85,11 @@ class ContactsViewController: UIViewController {
     }
 }
 
-
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension ContactsViewController : UICollectionViewDelegateFlowLayout {
-    
-    func CollectionViewSetUp() -> Void{
+extension ContactsViewController: UICollectionViewDelegateFlowLayout {
+
+    func CollectionViewSetUp() {
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.scrollDirection = UICollectionViewScrollDirection.vertical
         self.collectionView.collectionViewLayout = layout
@@ -99,57 +98,53 @@ extension ContactsViewController : UICollectionViewDelegateFlowLayout {
         self.collectionView.backgroundColor = ThemeColor.collectionViewBackgroundColor
         self.collectionView.showsHorizontalScrollIndicator = false
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemsPerRow = itemsPerRowPortrait
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             itemsPerRow = itemsPerRowPortrait
-        }else{
+        } else {
            itemsPerRow = itemsPerRowLandscape
         }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         let heightPerItem = CGFloat(200.00)
-        
+
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
-        
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+
         return 0
     }
-    
+
 }
 
-extension ContactsViewController{
-    
+extension ContactsViewController {
+
     // MARK: - Lazy Loading of cells
     func loadImagesForOnscreenRows() {
         self.collectionView.reloadData()
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnscreenRows()
     }
-    
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate { loadImagesForOnscreenRows() }
     }
-    
+
 }
-
-
-
-

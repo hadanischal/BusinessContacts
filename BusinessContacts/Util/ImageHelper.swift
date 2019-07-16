@@ -12,15 +12,15 @@ import UIKit
 public protocol imageSession {
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath)
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath)
-    
+
 }
 
-class ImageHelper:imageSession{
-    
+class ImageHelper: imageSession {
+
     fileprivate let kLazyLoadCellImageViewTag = 1
     fileprivate let kLazyLoadPlaceholderImage = UIImage(named: "placeholder")!
     var imageManager: ImageManager { return ImageManager() }
-    
+
     func updateImageForCollectionViewCell(_ cell: UICollectionViewCell, inCollectionView collectionView: UICollectionView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
         imageView?.image = kLazyLoadPlaceholderImage
@@ -32,7 +32,7 @@ class ImageHelper:imageSession{
             }
         }
     }
-    
+
     func updateImageForTableViewCell(_ cell: UITableViewCell, inTableView tableView: UITableView, imageURL: String, atIndexPath indexPath: IndexPath) {
         let imageView = cell.viewWithTag(kLazyLoadCellImageViewTag) as? UIImageView
         imageView?.image = kLazyLoadPlaceholderImage
@@ -44,5 +44,5 @@ class ImageHelper:imageSession{
             }
         }
     }
-    
+
 }

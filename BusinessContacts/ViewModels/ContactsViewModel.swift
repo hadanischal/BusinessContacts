@@ -9,16 +9,16 @@
 import Foundation
 
 class ContactsViewModel {
-    weak var dataSource : GenericDataSource<ContactsModel>?
+    weak var dataSource: GenericDataSource<ContactsModel>?
     weak var service: ContactsServiceProtocol?
-    
-    init(service: ContactsServiceProtocol, dataSource : GenericDataSource<ContactsModel>?) {
+
+    init(service: ContactsServiceProtocol, dataSource: GenericDataSource<ContactsModel>?) {
         self.dataSource = dataSource
         self.service = service
     }
-    
+
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
-        
+
         guard let service = service else {
             completion?(Result.failure(ErrorResult.custom(string: "Missing service")))
             return
@@ -40,8 +40,5 @@ class ContactsViewModel {
             }
         }
     }
-    
+
 }
-
- 
-

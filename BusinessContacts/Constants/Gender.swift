@@ -12,5 +12,3 @@ enum Gender {
     static let male = "Male"
     static let female = "Female"
 }
-
-

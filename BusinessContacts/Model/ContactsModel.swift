@@ -16,7 +16,7 @@ struct ContactsModel {
     let email: String!
     let gender: String!
     let id: AnyObject!
-    
+
     init(dictionary: [String: Any]) {
         self.first_name = util.filterNil(dictionary["first_name"] as AnyObject) as! String
         self.last_name = util.filterNil(dictionary["last_name"] as AnyObject) as! String
@@ -24,34 +24,33 @@ struct ContactsModel {
         self.gender = util.filterNil(dictionary["gender"] as AnyObject) as! String
         self.id = util.filterNil(dictionary["id"] as AnyObject)
     }
-    
+
     func fullname() -> String {
         return self.first_name + " " + self.last_name
     }
- 
+
 }
 
-extension ContactsModel : Parceable {
-    
-    static func parseObject(dictionary: [String : AnyObject]) -> Result<ContactsModel, ErrorResult>{
-        if (dictionary["first_name"] as? String) != nil{
+extension ContactsModel: Parceable {
+
+    static func parseObject(dictionary: [String: AnyObject]) -> Result<ContactsModel, ErrorResult> {
+        if (dictionary["first_name"] as? String) != nil {
             let object = ContactsModel(dictionary: dictionary)
             return Result.success(object)
         } else {
             return Result.failure(ErrorResult.parser(string: "Unable to parse conversion rate"))
         }
     }
-    
+
 }
 
+extension ContactsModel: Comparable {
 
-extension ContactsModel : Comparable {
-    
     static func == (lhs: ContactsModel, rhs: ContactsModel) -> Bool {
         return (lhs.first_name, lhs.last_name) ==
             (rhs.first_name, rhs.last_name)
     }
-    
+
     static func < (lhs: ContactsModel, rhs: ContactsModel) -> Bool {
         return (lhs.last_name, lhs.first_name) <
             (rhs.last_name, rhs.first_name)
@@ -67,4 +66,3 @@ extension ContactsModel {
     }
 }
 //contacts.sort(by: Contact.Comparison.firstLastAscending)
-
