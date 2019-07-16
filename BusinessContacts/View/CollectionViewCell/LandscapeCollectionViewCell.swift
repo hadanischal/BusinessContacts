@@ -28,7 +28,7 @@ class LandscapeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.bagroundView.backgroundColor = ThemeColor.contentViewBackgroundColor
-        self.profileImage?.contentMode =   UIViewContentMode.scaleAspectFit
+        self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
 
 }
