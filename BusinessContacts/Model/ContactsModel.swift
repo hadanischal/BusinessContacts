@@ -8,40 +8,23 @@
 
 import Foundation
 
-var util: Util { return Util() }
-
-struct ContactsModel {
-    let first_name: String!
-    let last_name: String!
-    let email: String!
-    let gender: String!
-    let id: AnyObject!
-
-    init(dictionary: [String: Any]) {
-        self.first_name = util.filterNil(dictionary["first_name"] as AnyObject) as! String
-        self.last_name = util.filterNil(dictionary["last_name"] as AnyObject) as! String
-        self.email = util.filterNil(dictionary["email"] as AnyObject) as! String
-        self.gender = util.filterNil(dictionary["gender"] as AnyObject) as! String
-        self.id = util.filterNil(dictionary["id"] as AnyObject)
-    }
-
-    func fullname() -> String {
-        return self.first_name + " " + self.last_name
-    }
-
+struct ContactsModel: Codable {
+    let first_name: String
+    let last_name: String
+    let email: String
+    let gender: String
+    let id: Int
 }
 
 extension ContactsModel: Parceable {
-
-    static func parseObject(dictionary: [String: AnyObject]) -> Result<ContactsModel, ErrorResult> {
-        if (dictionary["first_name"] as? String) != nil {
-            let object = ContactsModel(dictionary: dictionary)
-            return Result.success(object)
+    static func parseObject(data: Data) -> Result<[ContactsModel], ErrorResult> {
+        let decoder = JSONDecoder()
+        if let result = try? decoder.decode([ContactsModel].self, from: data) {
+            return Result.success(result)
         } else {
-            return Result.failure(ErrorResult.parser(string: "Unable to parse conversion rate"))
+            return Result.failure(ErrorResult.parser(string: "Unable to parse first_name results"))
         }
     }
-
 }
 
 extension ContactsModel: Comparable {

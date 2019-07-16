@@ -19,14 +19,13 @@ class PortraitCollectionViewCell: UICollectionViewCell {
             guard let contacts = contactsValue else {
                 return
             }
-            nameLabel?.text = contacts.fullname()
+            nameLabel?.text = "\(contacts.first_name) \(contacts.last_name)"
             emailLabel?.text = contacts.email
             if contacts.gender == Gender.male {
                 profileImage?.image = #imageLiteral(resourceName: "avatarMale")
             } else {
                 profileImage?.image = #imageLiteral(resourceName: "avatarFemale")
             }
-
         }
     }
 
@@ -38,5 +37,4 @@ class PortraitCollectionViewCell: UICollectionViewCell {
         self.backgroundView?.borderColor = ThemeColor.dimBlackColor
         self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
-
 }

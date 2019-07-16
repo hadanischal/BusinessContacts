@@ -8,11 +8,12 @@
 
 import Foundation
 
-class ContactsViewModel {
-    weak var dataSource: GenericDataSource<ContactsModel>?
-    weak var service: ContactsServiceProtocol?
+class ContactsViewModel: ContactsViewModelProtocol {
 
-    init(service: ContactsServiceProtocol, dataSource: GenericDataSource<ContactsModel>?) {
+    private var dataSource: GenericDataSource<ContactsModel>?
+    private var service: ContactsServiceProtocol?
+
+    init(service: ContactsServiceProtocol = ContactsService(), dataSource: GenericDataSource<ContactsModel>?) {
         self.dataSource = dataSource
         self.service = service
     }
