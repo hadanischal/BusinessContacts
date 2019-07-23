@@ -6,14 +6,16 @@
 //  Copyright © 2018 NischalHada. All rights reserved.
 //
 
-import Foundation
 import UIKit
+
+protocol UpdateContactDelegate {
+    func updateContact(_ data: ContactsModel)
+}
 
 class GenericDataSource<T>: NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
+    var delegate: UpdateContactDelegate?
     fileprivate let portraitReuseIdentifier = "PortraitCollectionViewCell"
-    fileprivate let landscapeReuseIdentifier = "LandscapeCollectionViewCell"
-
 }
 
 class ContactsDataSource: GenericDataSource<ContactsModel>, UICollectionViewDataSource {
@@ -28,9 +30,13 @@ class ContactsDataSource: GenericDataSource<ContactsModel>, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: portraitReuseIdentifier, for: indexPath) as! PortraitCollectionViewCell
-        let feedsValue = self.data.value[indexPath.row]
-        cell.contactsValue = feedsValue
-        // ImageHelper().updateImageForCollectionViewCell(cell, inCollectionView: collectionView, imageURL: feedsValue.imageRef, atIndexPath: indexPath)
+        let contactsModel = self.data.value[indexPath.row]
+        cell.contactsValue = contactsModel
+        cell.favoriteBtnTap = {
+            if let delegate = self.delegate {
+                delegate.updateContact(contactsModel)
+            }
+        }
         return cell
     }
 }

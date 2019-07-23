@@ -38,7 +38,6 @@
 		AF31FA2B20BEF5AB007F88B2 /* ContactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31FA2A20BEF5AB007F88B2 /* ContactsViewModelTests.swift */; };
 		AF49B6A420BEA1CC00B01214 /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = AF49B6A320BEA1CB00B01214 /* contacts.json */; };
 		AF49B6A620BEA2EE00B01214 /* PortraitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */; };
-		AF49B6A820BEA30000B01214 /* LandscapeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49B6A720BEA30000B01214 /* LandscapeCollectionViewCell.swift */; };
 		AF7069CA22DDF2770078D700 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF7069C922DDF2770078D700 /* .swiftlint.yml */; };
 		AF7069CE22DDFA560078D700 /* ContactsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */; };
 		AFCA200B20BE883500E5C147 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA200A20BE883500E5C147 /* ContactsViewController.swift */; };
@@ -113,7 +112,6 @@
 		AF31FA2A20BEF5AB007F88B2 /* ContactsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelTests.swift; sourceTree = "<group>"; };
 		AF49B6A320BEA1CB00B01214 /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitCollectionViewCell.swift; sourceTree = "<group>"; };
-		AF49B6A720BEA30000B01214 /* LandscapeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7069C922DDF2770078D700 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelProtocol.swift; sourceTree = "<group>"; };
 		AFCA200A20BE883500E5C147 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */,
-				AF49B6A720BEA30000B01214 /* LandscapeCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -646,7 +643,6 @@
 				AF17F7E920BE769A003D82B1 /* Result.swift in Sources */,
 				AFCA200F20BE8A8500E5C147 /* ContactsDataSource.swift in Sources */,
 				AF17F7E120BE769A003D82B1 /* DynamicValue.swift in Sources */,
-				AF49B6A820BEA30000B01214 /* LandscapeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
