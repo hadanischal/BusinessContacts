@@ -72,6 +72,9 @@
                                                                 <constraint firstAttribute="width" constant="44" id="lYb-CK-GsB"/>
                                                             </constraints>
                                                             <state key="normal" backgroundImage="iconFavourite"/>
+                                                            <connections>
+                                                                <action selector="actionFavoriteButton:" destination="8JU-gF-RJf" eventType="touchUpInside" id="2E7-ub-ge8"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,14 +107,6 @@
                                             <outlet property="nameLabel" destination="b8R-5z-ZIQ" id="zP2-Hv-Zac"/>
                                             <outlet property="profileImage" destination="zdh-ef-mmg" id="v9P-CJ-OVL"/>
                                         </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionViewCell" id="vpA-F3-Il6" customClass="MyCollectionViewCell" customModule="BusinessContacts" customModuleProvider="target">
-                                        <rect key="frame" x="190" y="18" width="177" height="165"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="177" height="165"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

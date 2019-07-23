@@ -8,16 +8,22 @@
 
 import Foundation
 
-class ContactsViewModel: ContactsViewModelProtocol {
+class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
+    func updateContact(_ data: ContactsModel) {
+        print("data", data.first_name, data.email)
+        self.saveUpdatedContact(withContact: data)
+    }
 
     private var dataSource: GenericDataSource<ContactsModel>?
     private var service: ContactsServiceProtocol?
 
     private var contacts: [ContactsModel] = [ContactsModel]()
-
+    private var selectedSegment:Int? = 0
+    
     init(service: ContactsServiceProtocol = ContactsService(), dataSource: GenericDataSource<ContactsModel>?) {
         self.dataSource = dataSource
         self.service = service
+        self.dataSource?.delegate = self
     }
 
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
@@ -29,8 +35,8 @@ class ContactsViewModel: ContactsViewModelProtocol {
         service.fetchContacts { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let converter) :
-                    self?.contacts = converter
+                case .success(let list) :
+                    self?.contacts = list
                     self?.contacts.sort(by: ContactsModel.Comparison.firstLastAscending)
                     self?.dataSource?.data.value = self?.contacts ?? []
                     completion?(Result.success(true))
@@ -45,6 +51,7 @@ class ContactsViewModel: ContactsViewModelProtocol {
     }
 
     func didSelectSegment(_ segmentIndex: Int) {
+        selectedSegment = segmentIndex
         if segmentIndex == 0 {
             self.dataSource?.data.value = self.contacts
         } else {
@@ -53,9 +60,16 @@ class ContactsViewModel: ContactsViewModelProtocol {
     }
     
     private var filteredArray: [ContactsModel] {
-       //mocking favorite,
-        self.contacts[1].isFavorite = true
         let filteredlist = self.contacts.filter { $0.isFavorite == true }
         return filteredlist
+    }
+    
+    private func saveUpdatedContact(withContact data: ContactsModel) {
+        let isFavorite:Bool = data.isFavorite ?? false
+//        self.contacts.filter({$0.id == data.id}).first?.isFavorite = true
+        if let row = self.contacts.firstIndex(where: {$0.id == data.id}) {
+            self.contacts[row].isFavorite = !isFavorite
+            self.didSelectSegment(selectedSegment ?? 0)
+        }
     }
 }

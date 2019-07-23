@@ -9,6 +9,17 @@
 import UIKit
 
 extension UIColor {
+    static var selected: UIColor {
+        return UIColor.red
+    }
+    
+    static var unSelected: UIColor {
+        return UIColor.lightGray
+    }
+
+}
+
+extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         let newRed = CGFloat(red)/255
         let newGreen = CGFloat(green)/255

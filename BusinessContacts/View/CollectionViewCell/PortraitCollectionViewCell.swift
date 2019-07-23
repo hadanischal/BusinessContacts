@@ -14,7 +14,8 @@ class PortraitCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var emailLabel: UILabel?
     @IBOutlet weak var favoriteButton: UIButton!
-    
+    var favoriteBtnTap : (() -> ())?
+
     var contactsValue: ContactsModel? {
         didSet {
             guard let contacts = contactsValue else {
@@ -27,6 +28,7 @@ class PortraitCollectionViewCell: UICollectionViewCell {
             } else {
                 profileImage?.image = #imageLiteral(resourceName: "avatarFemale")
             }
+            favoriteButton.tintColor = contacts.isFavorite ?? false ? .selected : .unSelected
         }
     }
 
@@ -38,4 +40,8 @@ class PortraitCollectionViewCell: UICollectionViewCell {
         self.backgroundView?.borderColor = ThemeColor.dimBlackColor
         self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
+    
+    @IBAction func actionFavoriteButton(_ sender: UIButton) {
+        self.favoriteBtnTap?()
+    }
 }
