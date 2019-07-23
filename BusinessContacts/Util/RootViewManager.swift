@@ -9,13 +9,11 @@
 import Foundation
 import UIKit
 
-protocol ViewManagers {
+protocol RootViewManagerProtocol {
     func rootView() -> UIViewController
 }
 
-class RootViewManager {}
-
-extension RootViewManager: ViewManagers {
+class RootViewManager: RootViewManagerProtocol {
     func rootView() -> UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let controller: ContactsViewController = storyboard.instantiateViewController(withIdentifier: "ContactsViewController") as! ContactsViewController

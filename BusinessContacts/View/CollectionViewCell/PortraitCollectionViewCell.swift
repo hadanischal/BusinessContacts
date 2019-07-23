@@ -13,7 +13,8 @@ class PortraitCollectionViewCell: UICollectionViewCell {
     @IBOutlet var profileImage: UIImageView?
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var emailLabel: UILabel?
-
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     var contactsValue: ContactsModel? {
         didSet {
             guard let contacts = contactsValue else {

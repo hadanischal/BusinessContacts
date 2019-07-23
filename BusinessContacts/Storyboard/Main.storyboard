@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zP2-gM-MI4">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zP2-gM-MI4">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="KfU-cq-wgL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uQy-hy-IdG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z8y-zg-jgm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mmR-0B-ymz">
                                     <size key="itemSize" width="177" height="165"/>
@@ -42,7 +42,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="201"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-5z-ZIQ">
-                                                            <rect key="frame" x="15" y="143" width="150" height="21"/>
+                                                            <rect key="frame" x="15" y="143" width="115" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="QbS-yR-PfR"/>
                                                             </constraints>
@@ -65,16 +65,26 @@
                                                                 <constraint firstAttribute="width" constant="100" id="lfX-7f-woj"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-G1-7TT">
+                                                            <rect key="frame" x="122" y="131.66666666666666" width="44" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="UfF-xZ-yPc"/>
+                                                                <constraint firstAttribute="width" constant="44" id="lYb-CK-GsB"/>
+                                                            </constraints>
+                                                            <state key="normal" backgroundImage="iconFavourite"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="rVm-c0-j3W" secondAttribute="trailing" constant="15" id="3oU-r9-yNh"/>
+                                                        <constraint firstItem="Ikb-G1-7TT" firstAttribute="centerY" secondItem="b8R-5z-ZIQ" secondAttribute="centerY" id="5Gz-IF-V7P"/>
                                                         <constraint firstAttribute="bottom" secondItem="rVm-c0-j3W" secondAttribute="bottom" constant="13" id="8W3-xq-gvD"/>
                                                         <constraint firstItem="rVm-c0-j3W" firstAttribute="top" secondItem="b8R-5z-ZIQ" secondAttribute="bottom" constant="3" id="8jE-GK-w3V"/>
-                                                        <constraint firstAttribute="trailing" secondItem="b8R-5z-ZIQ" secondAttribute="trailing" constant="15" id="Rg6-jY-VKf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="b8R-5z-ZIQ" secondAttribute="trailing" constant="50" id="Rg6-jY-VKf"/>
                                                         <constraint firstItem="b8R-5z-ZIQ" firstAttribute="leading" secondItem="tII-07-6GW" secondAttribute="leading" constant="15" id="fxn-CZ-3tK"/>
                                                         <constraint firstItem="zdh-ef-mmg" firstAttribute="centerY" secondItem="tII-07-6GW" secondAttribute="centerY" constant="-20" id="iLN-T1-n4g"/>
                                                         <constraint firstItem="zdh-ef-mmg" firstAttribute="leading" secondItem="tII-07-6GW" secondAttribute="leading" constant="15" id="pyS-Fv-JIX"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ikb-G1-7TT" secondAttribute="trailing" constant="14" id="q4I-Td-VEE"/>
                                                         <constraint firstItem="rVm-c0-j3W" firstAttribute="leading" secondItem="tII-07-6GW" secondAttribute="leading" constant="15" id="tCS-Kq-1TD"/>
                                                     </constraints>
                                                 </view>
@@ -90,6 +100,7 @@
                                         <connections>
                                             <outlet property="bagroundView" destination="tII-07-6GW" id="CTo-d5-gLU"/>
                                             <outlet property="emailLabel" destination="rVm-c0-j3W" id="Z8B-SX-iOr"/>
+                                            <outlet property="favoriteButton" destination="Ikb-G1-7TT" id="AGu-JO-bCO"/>
                                             <outlet property="nameLabel" destination="b8R-5z-ZIQ" id="zP2-Hv-Zac"/>
                                             <outlet property="profileImage" destination="zdh-ef-mmg" id="v9P-CJ-OVL"/>
                                         </connections>
@@ -132,7 +143,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zP2-gM-MI4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jj1-Vk-Jo7">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -146,6 +157,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iconFavourite" width="33.333332061767578" height="33.333332061767578"/>
         <image name="placeholder" width="75" height="75"/>
     </resources>
 </document>

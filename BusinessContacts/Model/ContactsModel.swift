@@ -12,8 +12,11 @@ struct ContactsModel: Codable {
     let first_name: String
     let last_name: String
     let email: String
-    let gender: String
+    let gender: Gender
     let id: Int
+    
+    var isFavorite: Bool? = false
+
 }
 
 extension ContactsModel: Parceable {
@@ -22,7 +25,7 @@ extension ContactsModel: Parceable {
         if let result = try? decoder.decode([ContactsModel].self, from: data) {
             return Result.success(result)
         } else {
-            return Result.failure(ErrorResult.parser(string: "Unable to parse first_name results"))
+            return Result.failure(ErrorResult.parser(string: "Unable to parse ContactsModel results"))
         }
     }
 }

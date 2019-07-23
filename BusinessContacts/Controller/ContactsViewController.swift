@@ -17,7 +17,6 @@ class ContactsViewController: UIViewController {
     var currentDeviceOrientation: UIDeviceOrientation = .unknown
     private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
-    var segmentedController: UISegmentedControl!
 
     let dataSource = ContactsDataSource()
     private var viewModel: ContactsViewModelProtocol?
@@ -64,11 +63,14 @@ class ContactsViewController: UIViewController {
 
     }
     func setupUISegmentedControl() {
-        let items = ["All", "Favourites"]
-        segmentedController = UISegmentedControl(items: items)
         let paddingSpace = segmentedInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
+        
+        let items = ["All", "Favourites"]
+        let segmentedController = UISegmentedControl(items: items)
         segmentedController.frame =  CGRect(x: segmentedInsets.left, y: segmentedInsets.top, width: availableWidth, height: segmentedController.frame.height)
+        segmentedController.selectedSegmentIndex = 0
+        segmentedController.addTarget(self, action: #selector(didSelectSegment), for: .valueChanged)
         navigationItem.titleView = segmentedController
     }
 
@@ -80,6 +82,10 @@ class ContactsViewController: UIViewController {
             }
         }
         refreshControl.endRefreshing()
+    }
+    
+    @objc func didSelectSegment(_ sender: UISegmentedControl) {
+        viewModel?.didSelectSegment(sender.selectedSegmentIndex)
     }
 }
 
@@ -110,7 +116,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        let heightPerItem = CGFloat(150.00)
+        let heightPerItem = CGFloat(200.00)
 
         return CGSize(width: widthPerItem, height: heightPerItem)
     }

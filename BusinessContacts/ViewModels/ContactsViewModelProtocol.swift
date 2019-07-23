@@ -10,4 +10,5 @@ import Foundation
 
 protocol ContactsViewModelProtocol {
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)?)
+    func didSelectSegment(_ segmentIndex: Int)
 }

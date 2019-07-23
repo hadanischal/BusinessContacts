@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Gender {
-    static let male = "Male"
-    static let female = "Female"
+enum Gender: String, Codable {
+    case male = "Male"
+    case female = "Female"
 }
