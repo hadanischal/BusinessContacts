@@ -47,6 +47,9 @@
 		AFCA201120BE8BBB00E5C147 /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA201020BE8BBB00E5C147 /* ContactsModel.swift */; };
 		AFCA202820BE8D4A00E5C147 /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCA202720BE8D4A00E5C147 /* ContactsService.swift */; };
 		AFCA206B20BE95B500E5C147 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AFCA206A20BE95B500E5C147 /* .gitignore */; };
+		AFDD015A22DF4D010072F062 /* ProcessContactsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD015922DF4D010072F062 /* ProcessContactsHelper.swift */; };
+		AFDD015C22DF4D260072F062 /* ProcessContactsHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD015B22DF4D260072F062 /* ProcessContactsHelperProtocol.swift */; };
+		AFDD015E22DF4D510072F062 /* ImageHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDD015D22DF4D510072F062 /* ImageHelperProtocol.swift */; };
 		B783D5CA0DBB34A9A08097B3 /* Pods_BusinessContactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68BD858D6B860A5367F31FF /* Pods_BusinessContactsUITests.framework */; };
 		D0E49B560B7B157B50C445CB /* Pods_BusinessContactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48F80CC7F94B89C1B1E67A3 /* Pods_BusinessContactsTests.framework */; };
 /* End PBXBuildFile section */
@@ -119,6 +122,9 @@
 		AFCA201020BE8BBB00E5C147 /* ContactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 		AFCA202720BE8D4A00E5C147 /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		AFCA206A20BE95B500E5C147 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AFDD015922DF4D010072F062 /* ProcessContactsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessContactsHelper.swift; sourceTree = "<group>"; };
+		AFDD015B22DF4D260072F062 /* ProcessContactsHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessContactsHelperProtocol.swift; sourceTree = "<group>"; };
+		AFDD015D22DF4D510072F062 /* ImageHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelperProtocol.swift; sourceTree = "<group>"; };
 		D48F80CC7F94B89C1B1E67A3 /* Pods_BusinessContactsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessContactsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68BD858D6B860A5367F31FF /* Pods_BusinessContactsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessContactsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83F1E6101AE239E057E9D96 /* Pods-BusinessContactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessContactsTests.debug.xcconfig"; path = "Target Support Files/Pods-BusinessContactsTests/Pods-BusinessContactsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,8 +206,9 @@
 				AF17F7B120BE769A003D82B1 /* View */,
 				AF17F7AB20BE7699003D82B1 /* Controller */,
 				AF17F7AE20BE7699003D82B1 /* Storyboard */,
-				AF17F7C720BE769A003D82B1 /* Services */,
 				AFCA202620BE8D3B00E5C147 /* ContactsService */,
+				AFDD015822DF4CA40072F062 /* Helper */,
+				AF17F7C720BE769A003D82B1 /* Services */,
 				AF17F7A320BE7699003D82B1 /* Extension */,
 				AF17F7C520BE769A003D82B1 /* Resources */,
 				AF17F7A620BE7699003D82B1 /* Util */,
@@ -250,7 +257,6 @@
 			children = (
 				AF17F7A720BE7699003D82B1 /* Reachability.swift */,
 				AF17F7A820BE7699003D82B1 /* RootViewManager.swift */,
-				AF17F7AA20BE7699003D82B1 /* ImageHelper.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -292,7 +298,7 @@
 		AF17F7B820BE769A003D82B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF17F7BA20BE769A003D82B1 /* DynamicValue.swift */,
+				AF31FA2020BED8CD007F88B2 /* Gender.swift */,
 				AFCA201020BE8BBB00E5C147 /* ContactsModel.swift */,
 			);
 			path = Model;
@@ -304,6 +310,7 @@
 				AF7069CD22DDFA560078D700 /* ContactsViewModelProtocol.swift */,
 				AFCA200C20BE8A6C00E5C147 /* ContactsViewModel.swift */,
 				AFCA200E20BE8A8500E5C147 /* ContactsDataSource.swift */,
+				AF17F7BA20BE769A003D82B1 /* DynamicValue.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -320,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				AF17F7C420BE769A003D82B1 /* ThemeColor.swift */,
-				AF31FA2020BED8CD007F88B2 /* Gender.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -377,6 +383,17 @@
 				AFCA202720BE8D4A00E5C147 /* ContactsService.swift */,
 			);
 			path = ContactsService;
+			sourceTree = "<group>";
+		};
+		AFDD015822DF4CA40072F062 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AFDD015B22DF4D260072F062 /* ProcessContactsHelperProtocol.swift */,
+				AFDD015922DF4D010072F062 /* ProcessContactsHelper.swift */,
+				AFDD015D22DF4D510072F062 /* ImageHelperProtocol.swift */,
+				AF17F7AA20BE7699003D82B1 /* ImageHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		C1F00CE05D2C790A27DF0267 /* Frameworks */ = {
@@ -455,7 +472,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = NischalHada;
 				TargetAttributes = {
 					AF17F76C20BE6434003D82B1 = {
@@ -610,15 +627,18 @@
 				AF31FA2120BED8CD007F88B2 /* Gender.swift in Sources */,
 				AF17F77920BE6434003D82B1 /* BusinessContacts.xcdatamodeld in Sources */,
 				AF17F7D620BE769A003D82B1 /* RootViewManager.swift in Sources */,
+				AFDD015E22DF4D510072F062 /* ImageHelperProtocol.swift in Sources */,
 				AF17F7EB20BE769A003D82B1 /* ImageManager.swift in Sources */,
 				AF17F7EF20BE769A003D82B1 /* ParserHelper.swift in Sources */,
 				AF17F7E720BE769A003D82B1 /* ThemeColor.swift in Sources */,
 				AF17F7D520BE769A003D82B1 /* Reachability.swift in Sources */,
 				AFCA201120BE8BBB00E5C147 /* ContactsModel.swift in Sources */,
+				AFDD015C22DF4D260072F062 /* ProcessContactsHelperProtocol.swift in Sources */,
 				AF17F7D320BE769A003D82B1 /* UIColor.swift in Sources */,
 				AF17F7EE20BE769A003D82B1 /* RequestFactory.swift in Sources */,
 				AF49B6A620BEA2EE00B01214 /* PortraitCollectionViewCell.swift in Sources */,
 				AFCA202820BE8D4A00E5C147 /* ContactsService.swift in Sources */,
+				AFDD015A22DF4D010072F062 /* ProcessContactsHelper.swift in Sources */,
 				AF17F7ED20BE769A003D82B1 /* RequestHandler.swift in Sources */,
 				AF17F7E520BE769A003D82B1 /* AppDelegate.swift in Sources */,
 				AF17F7EA20BE769A003D82B1 /* ErrorResult.swift in Sources */,
@@ -681,6 +701,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -688,6 +709,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -738,6 +760,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -745,6 +768,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
