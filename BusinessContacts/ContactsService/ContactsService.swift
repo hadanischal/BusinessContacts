@@ -8,12 +8,9 @@
 
 import Foundation
 
-protocol ContactsServiceProtocol {
-    func fetchContacts(_ completion: @escaping ((Result<[ContactsModel], ErrorResult>) -> Void))
-}
-
-final class ContactsService: RequestHandler, ContactsServiceProtocol {
-
+class ContactsService: RequestHandler, ContactsServiceProtocol {
+    override init() {
+    }
     let endpoint = "https://gist.githubusercontent.com/hadanischal/db18a2029d898600cc8e5c4604478750/raw/2d746828c92165919930613839961d0b3ee61d7a/contacts.json"
 
     var task: URLSessionTask?

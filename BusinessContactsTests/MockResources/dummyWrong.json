@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1644177,
+        "title": "Digitized",
+        "userName": "syork",
+        "numViews": 17,
+        "numVotes": 1,
+        "numComments": 0,
+        "numHearts": 0,
+        "rank": 0,
+        "dateCreated": "2011-07-15 21:25:05",
+        "colors": [
+            "F27324",
+            "FF9D73",
+            "FFE1CC",
+            "FFF2E6",
+            "FFFFFF"
+        ],
+        "description": "<a href=\"http:\/\/www.colourlovers.com\/palette\/2285499\/Nestled\" target=\"_blank\"><img src=\"http:\/\/www.colourlovers.com\/images\/badges\/pw\/2285\/2285499_Nestled.png\" style=\"width: 240px; height: 120px; border: 0 none;\" alt=\"Nestled\" \/><\/a>\r\n<div style=\"width: 300px; text-align: center;\"><a href=\"http:\/\/www.colourlovers.com\/contests\/moo\/minicard\/2285499\" target=\"_blank\" style=\"display: block; margin-bottom: 5px; width: 300px; height: 120px; -moz-box-shadow: 0 1px 4px #d1d1d1; -webkit-box-shadow: 0 1px 4px #d1d1d1; box-shadow: 0 1px 4px #d1d1d1; filter: progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=180, Color=",
+        "url": "http:\/\/www.colourlovers.com\/pattern\/1644177\/Digitized",
+        "imageUrl": "http:\/\/static.colourlovers.com\/images\/patterns\/1644\/1644177.png",
+        "badgeUrl": "http:\/\/www.colourlovers.com\/images\/badges\/n\/1644\/1644177_Digitized.png",
+        "apiUrl": "http:\/\/www.colourlovers.com\/api\/pattern\/1644177",
+        "template": {
+            "title": "Orb",
+            "url": "http:\/\/www.colourlovers.com\/pattern\/template\/80590\/Orb",
+            "author": {
+                "userName": "MMMiguel",
+                "url": "http:\/\/www.colourlovers.com\/lover\/MMMiguel"
+            }
+        }
+    }
+]
