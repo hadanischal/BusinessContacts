@@ -20,6 +20,7 @@ class ContactsViewController: UIViewController {
 
     let dataSource = ContactsDataSource()
     private var viewModel: ContactsViewModelProtocol?
+    @IBOutlet weak var showMoreButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,12 @@ class ContactsViewController: UIViewController {
         self.viewModel = ContactsViewModel(dataSource: dataSource)
         self.dataSource.data.addAndNotify(observer: self) { [weak self] in
             self?.collectionView.reloadData()
+            self?.showMoreButton.isHidden = true
         }
         self.setupUIRefreshControl()
         self.setupUISegmentedControl()
         self.serviceCall()
-
+        self.showMoreButton.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +67,7 @@ class ContactsViewController: UIViewController {
     func setupUISegmentedControl() {
         let paddingSpace = segmentedInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
-        
+
         let items = ["All", "Favourites"]
         let segmentedController = UISegmentedControl(items: items)
         segmentedController.frame =  CGRect(x: segmentedInsets.left, y: segmentedInsets.top, width: availableWidth, height: segmentedController.frame.height)
@@ -83,9 +85,15 @@ class ContactsViewController: UIViewController {
         }
         refreshControl.endRefreshing()
     }
-    
+
     @objc func didSelectSegment(_ sender: UISegmentedControl) {
-        viewModel?.didSelectSegment(sender.selectedSegmentIndex)
+        let contactType = ContactType(rawValue: sender.selectedSegmentIndex)
+        viewModel?.didSelectSegment(withContactType: contactType)
+    }
+
+    // MARK: Button Action
+    @IBAction func actionShowMore(_ sender: UIButton) {
+        self.viewModel?.reloadData()
     }
 }
 
@@ -111,7 +119,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         if UIDevice.current.orientation.isPortrait {
             itemsPerRow = itemsPerRowPortrait
         } else {
-           itemsPerRow = itemsPerRowLandscape
+            itemsPerRow = itemsPerRowLandscape
         }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
@@ -130,7 +138,6 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-
         return 0
     }
 
@@ -140,7 +147,8 @@ extension ContactsViewController {
 
     // MARK: - Lazy Loading of cells
     func loadImagesForOnscreenRows() {
-        self.collectionView.reloadData()
+//        self.collectionView.reloadData()
+        self.showMoreButton.isHidden = false
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -14,7 +14,7 @@ class PortraitCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var emailLabel: UILabel?
     @IBOutlet weak var favoriteButton: UIButton!
-    var favoriteBtnTap : (() -> ())?
+    var favoriteBtnTap : (() -> Void)?
 
     var contactsValue: ContactsModel? {
         didSet {
@@ -40,7 +40,7 @@ class PortraitCollectionViewCell: UICollectionViewCell {
         self.backgroundView?.borderColor = ThemeColor.dimBlackColor
         self.profileImage?.contentMode =   UIView.ContentMode.scaleAspectFit
      }
-    
+
     @IBAction func actionFavoriteButton(_ sender: UIButton) {
         self.favoriteBtnTap?()
     }

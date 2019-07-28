@@ -11,17 +11,17 @@ import XCTest
 
 class ContactsServiceTests: XCTestCase {
     var testService: ContactsService!
-    
+
     override func setUp() {
         super.setUp()
         self.testService = ContactsService()
     }
-    
+
     override func tearDown() {
         self.testService = nil
         super.tearDown()
     }
-    
+
     func testCancelRequest() {
         testService.fetchContacts { (_) in
         }

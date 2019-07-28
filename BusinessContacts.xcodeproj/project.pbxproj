@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		467D61F67CC5DE7291050A60 /* Pods_BusinessContacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C20521F5906CE353E85B65C /* Pods_BusinessContacts.framework */; };
+		AF013D2A22EDA9A100B8E28B /* PaginationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013D2922EDA9A100B8E28B /* PaginationModel.swift */; };
+		AF013D2D22EDB73000B8E28B /* PaginationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013D2C22EDB73000B8E28B /* PaginationHandler.swift */; };
+		AF013D2F22EDB73E00B8E28B /* PaginationHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013D2E22EDB73E00B8E28B /* PaginationHandlerProtocol.swift */; };
+		AF013D3122EDC6DD00B8E28B /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013D3022EDC6DD00B8E28B /* Dynamic.swift */; };
 		AF14D32922E9E6A700875B25 /* dummyWrong.json in Resources */ = {isa = PBXBuildFile; fileRef = AF14D32822E9E6A700875B25 /* dummyWrong.json */; };
 		AF17F77920BE6434003D82B1 /* BusinessContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF17F77720BE6434003D82B1 /* BusinessContacts.xcdatamodeld */; };
 		AF17F78920BE6434003D82B1 /* BusinessContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17F78820BE6434003D82B1 /* BusinessContactsTests.swift */; };
@@ -37,6 +41,7 @@
 		AF31FA2720BEF55F007F88B2 /* ContactsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31FA2620BEF55F007F88B2 /* ContactsViewControllerTests.swift */; };
 		AF31FA2920BEF574007F88B2 /* ContactsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31FA2820BEF574007F88B2 /* ContactsModelTests.swift */; };
 		AF31FA2B20BEF5AB007F88B2 /* ContactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF31FA2A20BEF5AB007F88B2 /* ContactsViewModelTests.swift */; };
+		AF3EBCDC22EB1E04005D672D /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3EBCDB22EB1E04005D672D /* ContactType.swift */; };
 		AF49B6A420BEA1CC00B01214 /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = AF49B6A320BEA1CB00B01214 /* contacts.json */; };
 		AF49B6A620BEA2EE00B01214 /* PortraitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */; };
 		AF7069CA22DDF2770078D700 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF7069C922DDF2770078D700 /* .swiftlint.yml */; };
@@ -76,6 +81,10 @@
 		767F0CB1AEF8E6D04C08E481 /* Pods-BusinessContactsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessContactsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BusinessContactsUITests/Pods-BusinessContactsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		77E5D4C7DA82F4DB61B81F66 /* Pods-BusinessContactsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessContactsUITests.release.xcconfig"; path = "Target Support Files/Pods-BusinessContactsUITests/Pods-BusinessContactsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		87650F82D27C540EB4D73BBC /* Pods-BusinessContactsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessContactsTests.release.xcconfig"; path = "Target Support Files/Pods-BusinessContactsTests/Pods-BusinessContactsTests.release.xcconfig"; sourceTree = "<group>"; };
+		AF013D2922EDA9A100B8E28B /* PaginationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationModel.swift; sourceTree = "<group>"; };
+		AF013D2C22EDB73000B8E28B /* PaginationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandler.swift; sourceTree = "<group>"; };
+		AF013D2E22EDB73E00B8E28B /* PaginationHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationHandlerProtocol.swift; sourceTree = "<group>"; };
+		AF013D3022EDC6DD00B8E28B /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		AF14D32822E9E6A700875B25 /* dummyWrong.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dummyWrong.json; sourceTree = "<group>"; };
 		AF17F76D20BE6434003D82B1 /* BusinessContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF17F77820BE6434003D82B1 /* BusinessContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessContacts.xcdatamodel; sourceTree = "<group>"; };
@@ -111,6 +120,7 @@
 		AF31FA2620BEF55F007F88B2 /* ContactsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewControllerTests.swift; sourceTree = "<group>"; };
 		AF31FA2820BEF574007F88B2 /* ContactsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsModelTests.swift; sourceTree = "<group>"; };
 		AF31FA2A20BEF5AB007F88B2 /* ContactsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelTests.swift; sourceTree = "<group>"; };
+		AF3EBCDB22EB1E04005D672D /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		AF49B6A320BEA1CB00B01214 /* contacts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		AF49B6A520BEA2EE00B01214 /* PortraitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7069C922DDF2770078D700 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -170,6 +180,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AF013D2B22EDB6F100B8E28B /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				AF013D2E22EDB73E00B8E28B /* PaginationHandlerProtocol.swift */,
+				AF013D2C22EDB73000B8E28B /* PaginationHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
 		AF17F76420BE6434003D82B1 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +225,7 @@
 				AF17F7AE20BE7699003D82B1 /* Storyboard */,
 				AFCA202620BE8D3B00E5C147 /* ContactsService */,
 				AF17F7C720BE769A003D82B1 /* Services */,
+				AF013D2B22EDB6F100B8E28B /* Handler */,
 				AF17F7A320BE7699003D82B1 /* Extension */,
 				AF17F7C520BE769A003D82B1 /* Resources */,
 				AF17F7A620BE7699003D82B1 /* Util */,
@@ -297,6 +317,8 @@
 			children = (
 				AF31FA2020BED8CD007F88B2 /* Gender.swift */,
 				AFCA201020BE8BBB00E5C147 /* ContactsModel.swift */,
+				AF3EBCDB22EB1E04005D672D /* ContactType.swift */,
+				AF013D2922EDA9A100B8E28B /* PaginationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +330,7 @@
 				AFCA200C20BE8A6C00E5C147 /* ContactsViewModel.swift */,
 				AFCA200E20BE8A8500E5C147 /* ContactsDataSource.swift */,
 				AF17F7BA20BE769A003D82B1 /* DynamicValue.swift */,
+				AF013D3022EDC6DD00B8E28B /* Dynamic.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -631,21 +654,26 @@
 				AF7069CE22DDFA560078D700 /* ContactsViewModelProtocol.swift in Sources */,
 				AF31FA1F20BECE31007F88B2 /* UIView.swift in Sources */,
 				AF17F7D420BE769A003D82B1 /* String.swift in Sources */,
+				AF013D2F22EDB73E00B8E28B /* PaginationHandlerProtocol.swift in Sources */,
 				AF31FA2120BED8CD007F88B2 /* Gender.swift in Sources */,
 				AF17F77920BE6434003D82B1 /* BusinessContacts.xcdatamodeld in Sources */,
 				AF17F7D620BE769A003D82B1 /* RootViewManager.swift in Sources */,
 				AF17F7EB20BE769A003D82B1 /* ImageManager.swift in Sources */,
 				AF17F7EF20BE769A003D82B1 /* ParserHelper.swift in Sources */,
 				AF17F7E720BE769A003D82B1 /* ThemeColor.swift in Sources */,
+				AF013D2A22EDA9A100B8E28B /* PaginationModel.swift in Sources */,
 				AF17F7D520BE769A003D82B1 /* Reachability.swift in Sources */,
 				AFCA201120BE8BBB00E5C147 /* ContactsModel.swift in Sources */,
 				AF17F7D320BE769A003D82B1 /* UIColor.swift in Sources */,
 				AF17F7EE20BE769A003D82B1 /* RequestFactory.swift in Sources */,
 				AF49B6A620BEA2EE00B01214 /* PortraitCollectionViewCell.swift in Sources */,
 				AFCA202820BE8D4A00E5C147 /* ContactsService.swift in Sources */,
+				AF013D3122EDC6DD00B8E28B /* Dynamic.swift in Sources */,
 				AF17F7ED20BE769A003D82B1 /* RequestHandler.swift in Sources */,
 				AF17F7E520BE769A003D82B1 /* AppDelegate.swift in Sources */,
+				AF013D2D22EDB73000B8E28B /* PaginationHandler.swift in Sources */,
 				AF17F7EA20BE769A003D82B1 /* ErrorResult.swift in Sources */,
+				AF3EBCDC22EB1E04005D672D /* ContactType.swift in Sources */,
 				AF17F7E920BE769A003D82B1 /* Result.swift in Sources */,
 				AFCA200F20BE8A8500E5C147 /* ContactsDataSource.swift in Sources */,
 				AF17F7E120BE769A003D82B1 /* DynamicValue.swift in Sources */,

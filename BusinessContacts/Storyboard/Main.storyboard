@@ -114,18 +114,33 @@
                                     <outlet property="delegate" destination="u5y-Wt-vKm" id="gYp-pF-GFl"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGa-KK-kxx">
+                                <rect key="frame" x="41.333333333333343" y="800" width="331.33333333333326" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XNp-r7-y0k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Show More"/>
+                                <connections>
+                                    <action selector="actionShowMore:" destination="u5y-Wt-vKm" eventType="touchUpInside" id="hOh-hN-mFn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z8y-zg-jgm" firstAttribute="leading" secondItem="uQy-hy-IdG" secondAttribute="leading" id="3p1-Wc-39C"/>
+                            <constraint firstItem="fGa-KK-kxx" firstAttribute="centerX" secondItem="uQy-hy-IdG" secondAttribute="centerX" id="L0T-yA-pdS"/>
                             <constraint firstItem="KfU-cq-wgL" firstAttribute="top" secondItem="Z8y-zg-jgm" secondAttribute="bottom" id="bSv-lj-jlQ"/>
+                            <constraint firstItem="KfU-cq-wgL" firstAttribute="top" secondItem="fGa-KK-kxx" secondAttribute="bottom" constant="12" id="f3W-tC-PeY"/>
                             <constraint firstItem="Z8y-zg-jgm" firstAttribute="top" secondItem="uQy-hy-IdG" secondAttribute="top" id="lPn-kj-GmK"/>
+                            <constraint firstItem="fGa-KK-kxx" firstAttribute="width" secondItem="uQy-hy-IdG" secondAttribute="width" multiplier="0.8" id="rSG-cq-kRI"/>
                             <constraint firstAttribute="trailing" secondItem="Z8y-zg-jgm" secondAttribute="trailing" id="xUd-7H-6AV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jNR-c2-jpu"/>
                     <connections>
                         <outlet property="collectionView" destination="Z8y-zg-jgm" id="USQ-Be-Kji"/>
+                        <outlet property="showMoreButton" destination="fGa-KK-kxx" id="hTN-J3-Zyi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNN-Pw-EbG" userLabel="First Responder" sceneMemberID="firstResponder"/>

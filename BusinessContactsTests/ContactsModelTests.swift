@@ -10,15 +10,15 @@ import XCTest
 @testable import BusinessContacts
 
 class ContactsModelTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testExampleEmptyData() {
         let data = Data()
         let completion: ((Result<[ContactsModel], ErrorResult>) -> Void) = { result in
@@ -31,7 +31,7 @@ class ContactsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testParseValidData() {
         let data = MockData().stubContactData()
         let completion: ((Result<[ContactsModel], ErrorResult>) -> Void) = { result in
@@ -41,7 +41,7 @@ class ContactsModelTests: XCTestCase {
             case .success(let list):
                 XCTAssertNotNil(list, "expect dataSource data value be not nil")
                 XCTAssertEqual(list.count, 100, "Expected result count to be 1")
-                
+
                 let contactValue = list[0]
                 XCTAssertNotNil(contactValue, "expect contactValue be not nil")
                 XCTAssertEqual(contactValue.email, "bwright0@go.com", "Expected email to be abennett1h@hubpages.com")
@@ -50,7 +50,7 @@ class ContactsModelTests: XCTestCase {
         }
         ParserHelper.parse(data: data, completion: completion)
     }
-    
+
     func testInvalidData() {
         let result = ContactsModel.parseObject(data: MockData().stubDummyWrongData())
         switch result {
@@ -60,5 +60,5 @@ class ContactsModelTests: XCTestCase {
             return
         }
     }
-    
+
 }
