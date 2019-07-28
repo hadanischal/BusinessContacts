@@ -13,21 +13,35 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
         print("data", data.first_name, data.email)
         self.saveUpdatedContact(withContact: data)
     }
-
+    
+    //input
     private var dataSource: GenericDataSource<ContactsModel>?
     private var service: ContactsServiceProtocol?
-
-    private var contacts: [ContactsModel] = [ContactsModel]()
-    private var selectedSegment:Int? = 0
+    private var paginationHandler: PaginationHandlerProtocol!
     
-    init(service: ContactsServiceProtocol = ContactsService(), dataSource: GenericDataSource<ContactsModel>?) {
+    private var contacts: [ContactsModel] = [ContactsModel]()
+    private var selectedSegment: ContactType = ContactType.all
+    private var paginatedContacts: [ContactsModel] = [ContactsModel]()
+    
+    init(service: ContactsServiceProtocol = ContactsService(),
+         dataSource: GenericDataSource<ContactsModel>?,
+         withPaginationHandler paginationHandler: PaginationHandlerProtocol = PaginationHandler()
+        ) {
         self.dataSource = dataSource
         self.service = service
-        self.dataSource?.delegate = self
+        self.paginationHandler = paginationHandler
+        self.dataSource?.delegate = self //delegate to receive Favorite contact list
+        self.paginationHandler.currentContact.bindAndFire { [weak self] list in
+            DispatchQueue.main.async {
+                self?.paginatedContacts = list
+                self?.didSelectSegment(withContactType: nil)
+                //                self?.dataSource?.data.value = list
+            }
+        }
     }
-
+    
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
-
+        
         guard let service = service else {
             completion?(Result.failure(ErrorResult.custom(string: "Missing service")))
             return
@@ -38,7 +52,10 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
                 case .success(let list) :
                     self?.contacts = list
                     self?.contacts.sort(by: ContactsModel.Comparison.firstLastAscending)
-                    self?.dataSource?.data.value = self?.contacts ?? []
+                    if let contactList = self?.contacts {
+                        self?.handellPagination(withContactList: contactList)
+                        //                        self?.dataSource?.data.value = contactList
+                    }
                     completion?(Result.success(true))
                     break
                 case .failure(let error) :
@@ -49,27 +66,54 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
             }
         }
     }
-
-    func didSelectSegment(_ segmentIndex: Int) {
-        selectedSegment = segmentIndex
-        if segmentIndex == 0 {
-            self.dataSource?.data.value = self.contacts
-        } else {
-            self.dataSource?.data.value = filteredArray
+    
+    // MARK: UISegmentedControl action
+    
+    func didSelectSegment(withContactType contactType: ContactType?) {
+        //set contact type if its been passed if else dont
+        if let type = contactType {
+            selectedSegment = type
+        }
+        
+        switch selectedSegment {
+        case .all:
+            self.dataSource?.data.value = self.paginatedContacts // self.contacts
+            
+        case .favourites:
+            self.dataSource?.data.value = favoriteList
         }
     }
     
-    private var filteredArray: [ContactsModel] {
-        let filteredlist = self.contacts.filter { $0.isFavorite == true }
+    // MARK: Update Favorite contact List
+    private var favoriteList: [ContactsModel] {
+        ///let filteredlist = self.contacts.filter { $0.isFavorite == true }
+        let filteredlist = self.paginatedContacts.filter { $0.isFavorite == true }
         return filteredlist
     }
     
     private func saveUpdatedContact(withContact data: ContactsModel) {
-        let isFavorite:Bool = data.isFavorite ?? false
-//        self.contacts.filter({$0.id == data.id}).first?.isFavorite = true
+        let isFavorite: Bool = data.isFavorite ?? false
+        ///self.contacts.filter({$0.id == data.id}).first?.isFavorite = true
+        
+        if let row = self.paginatedContacts.firstIndex(where: {$0.id == data.id}) {
+            self.paginatedContacts[row].isFavorite = !isFavorite
+            self.didSelectSegment(withContactType: nil)
+        }
+        
         if let row = self.contacts.firstIndex(where: {$0.id == data.id}) {
             self.contacts[row].isFavorite = !isFavorite
-            self.didSelectSegment(selectedSegment ?? 0)
+            ///self.didSelectSegment(withContactType: nil)
+        }
+    }
+    
+    // MARK: Handell pagination of contact List
+    private func handellPagination(withContactList contactList: [ContactsModel]) {
+        self.paginationHandler.savePageCount(withContact: contactList)
+        self.reloadData()
+    }
+    
+    func reloadData() {
+        self.paginationHandler.loadData { _ in
         }
     }
 }

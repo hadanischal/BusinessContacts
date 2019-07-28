@@ -14,9 +14,8 @@ struct ContactsModel: Codable {
     let email: String
     let gender: Gender
     let id: Int
-    
-    var isFavorite: Bool? = false
 
+    var isFavorite: Bool? = false
 }
 
 extension ContactsModel: Parceable {

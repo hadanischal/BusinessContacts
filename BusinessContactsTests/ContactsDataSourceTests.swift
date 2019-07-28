@@ -11,17 +11,17 @@ import XCTest
 
 class ContactsDataSourceTests: XCTestCase {
     var dataSource: ContactsDataSource!
-    
+
     override func setUp() {
         super.setUp()
         dataSource = ContactsDataSource()
     }
-    
+
     override func tearDown() {
         dataSource = nil
         super.tearDown()
     }
-    
+
     func testEmptyValueInDataSource() {
         dataSource?.data.value = []
         let layout = UICollectionViewFlowLayout()
@@ -30,7 +30,7 @@ class ContactsDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource?.numberOfSections(in: collectionView), 1, "Expected one section in collection view")
         XCTAssertEqual(dataSource?.collectionView(collectionView, numberOfItemsInSection: 0), 0, "Expected no cell in collection view")
     }
-    
+
     func testValueInDataSource() {
         let responseResults = MockData().stubContactList()
         dataSource?.data.value = responseResults
