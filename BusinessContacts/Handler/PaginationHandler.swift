@@ -9,68 +9,58 @@
 import Foundation
 
 class PaginationHandler: PaginationHandlerProtocol {
-    var model: PaginationModel?
-    var contactList: [ContactsModel]?
-    let currentContact: Dynamic<[ContactsModel]>
+    private let pageSize = Config.pageSize
 
-    init() {
-        self.model = PaginationModel(pageNo: 0, nextPage: 1, hasMore: true, isLoading: false, pageSize: 20, totalCount: 20)
-        currentContact = Dynamic([])
+    static let defaultModel: PaginationModel =  PaginationModel(pageNo: 0, nextPage: 0, hasMore: false, isLoading: false, pageSize: Config.pageSize, totalCount: 0)
+    private var model: PaginationModel!
+
+    init(withModel model: PaginationModel = defaultModel ) {
+        self.model = model
     }
 
-    func savePageCount(withContact contactList: [ContactsModel]) {
-        self.contactList = contactList
-        if let _ = model {
-            let hasMore: Bool = contactList.count > 20
+    func savePagination(withContact contactList: [ContactsModel]) {
+        if contactList.count > 0 {
+            let hasMore: Bool = contactList.count > pageSize
 
             let pagination = PaginationModel(pageNo: 0,
                                              nextPage: hasMore ? 1 : 0,
                                              hasMore: hasMore,
                                              isLoading: false,
-                                             pageSize: 20,
+                                             pageSize: pageSize,
                                              totalCount: contactList.count)
             self.model = pagination
-        }
+         }
     }
 
-    private func updatePageCount() {
-        if let currentPage = model {
-            let hasMore: Bool = currentPage.nextPage * currentPage.pageSize < currentPage.totalCount
-
-            let pagination = PaginationModel(pageNo: currentPage.nextPage,
-                                             nextPage: hasMore ? currentPage.nextPage + 1 : currentPage.nextPage,
-                                             hasMore: hasMore,
-                                             isLoading: false,
-                                             pageSize: 20,
-                                             totalCount: currentPage.totalCount)
-            self.model = pagination
-        }
-    }
-
-    func loadData(_ onComplete: @escaping ([ContactsModel]) -> Void) {
-        guard
-            let model = model,
-            let contactList = contactList else {
-                onComplete([])
-                return
-        }
+    func getContactWithPagination( withContact contactList: [ContactsModel], completion: @escaping ([ContactsModel]) -> Void) {
 
         let page = model.pageNo
         let numberOfItemsPerPage = model.pageSize
         let data = contactList
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.async {
             let firstIndex = page * numberOfItemsPerPage
             guard firstIndex < data.count else {
-                onComplete([])
+                completion([])
                 return
             }
             let lastIndex = (page + 1) * numberOfItemsPerPage < data.count ?
                 (page + 1) * numberOfItemsPerPage : data.count
             let selectedData = Array(data[firstIndex ..< lastIndex])
-            self.currentContact.value = selectedData
-            self.updatePageCount()
-            onComplete(Array(data[firstIndex ..< lastIndex]))
+            completion(selectedData)
         }
     }
+
+    func updatePagination() {
+
+        let hasMore: Bool = model.nextPage * model.pageSize < model.totalCount
+
+        let pagination = PaginationModel(pageNo: model.nextPage,
+                                         nextPage: hasMore ? model.nextPage + 1 : model.nextPage,
+                                         hasMore: hasMore,
+                                         isLoading: false,
+                                         pageSize: pageSize,
+                                         totalCount: model.totalCount)
+        self.model = pagination
+     }
 }

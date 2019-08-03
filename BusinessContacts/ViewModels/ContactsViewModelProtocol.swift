@@ -11,5 +11,5 @@ import Foundation
 protocol ContactsViewModelProtocol {
     func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)?)
     func didSelectSegment(withContactType contactType: ContactType?)
-    func reloadData()
+    func showMoreContactList()
 }
