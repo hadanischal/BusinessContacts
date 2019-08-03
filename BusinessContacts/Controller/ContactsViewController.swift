@@ -98,7 +98,7 @@ class ContactsViewController: UIViewController {
 
     // MARK: Button Action
     @IBAction func actionShowMore(_ sender: UIButton) {
-        self.viewModel?.reloadData()
+        self.viewModel?.showMoreContactList()
     }
 }
 

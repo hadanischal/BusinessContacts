@@ -9,9 +9,7 @@
 import Foundation
 
 protocol PaginationHandlerProtocol {
-    var currentContact: Dynamic<[ContactsModel]> { get }
-    var model: PaginationModel? { get }
-
-    func savePageCount(withContact contactList: [ContactsModel])
-    func loadData(_ onComplete: @escaping ([ContactsModel]) -> Void)
+    func savePagination(withContact contactList: [ContactsModel])
+    func getContactWithPagination( withContact contactList: [ContactsModel], completion: @escaping ([ContactsModel]) -> Void)
+    func updatePagination()
 }
