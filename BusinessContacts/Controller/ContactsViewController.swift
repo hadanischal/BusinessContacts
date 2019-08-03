@@ -14,7 +14,8 @@ class ContactsViewController: UIViewController {
     private let itemsPerRowLandscape: CGFloat = 2
     private let segmentedInsets = UIEdgeInsets(top: 0.0, left: 50.0, bottom: 5.0, right: 10.0)
 
-    var currentDeviceOrientation: UIDeviceOrientation = .unknown
+    var currentInterfaceOrientation: UIInterfaceOrientation = UIInterfaceOrientation.unknown
+
     private let refreshControl = UIRefreshControl()
     @IBOutlet var collectionView: UICollectionView!
 
@@ -40,21 +41,25 @@ class ContactsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate), name: UIDevice.orientationDidChangeNotification, object: nil)
-        self.currentDeviceOrientation = UIDevice.current.orientation
+        self.currentInterfaceOrientation = UIApplication.shared.statusBarOrientation
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-        if UIDevice.current.isGeneratingDeviceOrientationNotifications {
-            UIDevice.current.endGeneratingDeviceOrientationNotifications()
-        }
     }
 
-    @objc func deviceDidRotate(notification: NSNotification) {
-        self.currentDeviceOrientation = UIDevice.current.orientation
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { _ in
+            if UIApplication.shared.statusBarOrientation.isLandscape {
+                self.currentInterfaceOrientation = UIInterfaceOrientation.landscapeLeft
+            } else {
+                self.currentInterfaceOrientation = UIInterfaceOrientation.portrait
+            }
+            self.deviceDidRotate()
+        })
+    }
+
+    func deviceDidRotate() {
         self.collectionView.reloadData()
         self.setupUISegmentedControl()
     }
@@ -62,8 +67,8 @@ class ContactsViewController: UIViewController {
     func setupUIRefreshControl() {
         refreshControl.addTarget(self, action: #selector(serviceCall), for: UIControl.Event.valueChanged)
         self.collectionView.addSubview(refreshControl)
-
     }
+
     func setupUISegmentedControl() {
         let paddingSpace = segmentedInsets.left * 2
         let availableWidth = view.frame.width - paddingSpace
@@ -116,7 +121,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemsPerRow = itemsPerRowPortrait
-        if UIDevice.current.orientation.isPortrait {
+        if self.currentInterfaceOrientation == .portrait ||  self.currentInterfaceOrientation == .portraitUpsideDown {
             itemsPerRow = itemsPerRowPortrait
         } else {
             itemsPerRow = itemsPerRowLandscape
