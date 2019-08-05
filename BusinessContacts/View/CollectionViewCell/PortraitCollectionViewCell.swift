@@ -21,7 +21,7 @@ class PortraitCollectionViewCell: UICollectionViewCell {
             guard let contacts = contactsValue else {
                 return
             }
-            nameLabel?.text = "\(contacts.first_name) \(contacts.last_name)"
+            nameLabel?.text = "\(contacts.first_name) \(contacts.last_name), id: \(contacts.id)"
             emailLabel?.text = contacts.email
             if contacts.gender == Gender.male {
                 profileImage?.image = #imageLiteral(resourceName: "avatarMale")
