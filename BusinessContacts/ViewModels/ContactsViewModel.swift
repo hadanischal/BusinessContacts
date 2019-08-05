@@ -18,6 +18,7 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
     private var dataSource: GenericDataSource<ContactsModel>?
     private var service: ContactsServiceProtocol?
     private var paginationHandler: PaginationHandlerProtocol!
+    private var dispatchQueueHelper: DispatchProtocol!
 
     private var contacts: [ContactsModel] = [ContactsModel]()
     private var selectedSegment: ContactType = ContactType.all
@@ -25,12 +26,14 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
 
     init(service: ContactsServiceProtocol = ContactsService(),
          dataSource: GenericDataSource<ContactsModel>?,
-         withPaginationHandler paginationHandler: PaginationHandlerProtocol = PaginationHandler()
+         withPaginationHandler paginationHandler: PaginationHandlerProtocol = PaginationHandler(),
+         withDispatchQueueHelper dispatchQueueHelper: DispatchProtocol = AsyncQueue.main
         ) {
         self.dataSource = dataSource
         self.service = service
         self.paginationHandler = paginationHandler
         self.dataSource?.delegate = self //delegate to receive Favorite contact list
+        self.dispatchQueueHelper = dispatchQueueHelper
     }
 
     // MARK: API request
@@ -42,11 +45,12 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
             return
         }
         service.fetchContacts { [weak self] result in
-            DispatchQueue.main.async {
+            self?.dispatchQueueHelper.dispatch {
                 switch result {
                 case .success(let list) :
                     self?.contacts = list
                     self?.contacts.sort(by: ContactsModel.Comparison.firstLastAscending)
+                    
                     self?.handellServerResponse()
                     //self?.dataSource?.data.value = contactList
                     completion?(Result.success(true))
@@ -67,16 +71,13 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
     }
 
     func showMoreContactList() {
-        self.getContactWithPagination() //first get info
-        self.paginationHandler.updatePagination() // then update pagination info for next request
+        self.getContactWithPagination()
     }
 
     private func getContactWithPagination() {
         self.paginationHandler.getContactWithPagination(withContact: contacts) { [weak self] paginatedContactList in
-            DispatchQueue.main.async {
                 self?.paginatedContacts = paginatedContactList
                 self?.didSelectSegment(withContactType: nil)
-            }
         }
     }
 

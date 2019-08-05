@@ -11,7 +11,7 @@ import Foundation
 class PaginationHandler: PaginationHandlerProtocol {
     private let pageSize = Config.pageSize
 
-    static let defaultModel: PaginationModel =  PaginationModel(pageNo: 0, nextPage: 0, hasMore: false, isLoading: false, pageSize: Config.pageSize, totalCount: 0)
+    static let defaultModel: PaginationModel =  PaginationModel(pageNo: 0, nextPage: 1, hasMore: false, isLoading: false, pageSize: Config.pageSize, totalCount: 0)
     private var model: PaginationModel!
 
     init(withModel model: PaginationModel = defaultModel ) {
@@ -47,6 +47,7 @@ class PaginationHandler: PaginationHandlerProtocol {
             let lastIndex = (page + 1) * numberOfItemsPerPage < data.count ?
                 (page + 1) * numberOfItemsPerPage : data.count
             let selectedData = Array(data[firstIndex ..< lastIndex])
+            self.updatePagination()
             completion(selectedData)
         }
     }

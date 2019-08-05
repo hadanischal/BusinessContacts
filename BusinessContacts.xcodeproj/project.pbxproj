@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0436682C22F56398003E3980 /* AsyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436682B22F56398003E3980 /* AsyncQueue.swift */; };
+		0436682E22F563A7003E3980 /* SyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436682D22F563A7003E3980 /* SyncQueue.swift */; };
+		0436683022F563DF003E3980 /* DispatchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436682F22F563DF003E3980 /* DispatchProtocol.swift */; };
+		0436683222F5685D003E3980 /* DispatcheBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436683122F5685D003E3980 /* DispatcheBaseModel.swift */; };
 		04DD73E022F46AC500B95A72 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD73DF22F46AC500B95A72 /* Config.swift */; };
 		467D61F67CC5DE7291050A60 /* Pods_BusinessContacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C20521F5906CE353E85B65C /* Pods_BusinessContacts.framework */; };
 		AF013D2A22EDA9A100B8E28B /* PaginationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF013D2922EDA9A100B8E28B /* PaginationModel.swift */; };
@@ -78,6 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0436682B22F56398003E3980 /* AsyncQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncQueue.swift; sourceTree = "<group>"; };
+		0436682D22F563A7003E3980 /* SyncQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncQueue.swift; sourceTree = "<group>"; };
+		0436682F22F563DF003E3980 /* DispatchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchProtocol.swift; sourceTree = "<group>"; };
+		0436683122F5685D003E3980 /* DispatcheBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatcheBaseModel.swift; sourceTree = "<group>"; };
 		04DD73DF22F46AC500B95A72 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		1C20521F5906CE353E85B65C /* Pods_BusinessContacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessContacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7228EB8617D5C8B87585AFCE /* Pods-BusinessContacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessContacts.debug.xcconfig"; path = "Target Support Files/Pods-BusinessContacts/Pods-BusinessContacts.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +179,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0436682A22F56327003E3980 /* DispatchQueueHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0436682F22F563DF003E3980 /* DispatchProtocol.swift */,
+				0436683122F5685D003E3980 /* DispatcheBaseModel.swift */,
+				0436682B22F56398003E3980 /* AsyncQueue.swift */,
+				0436682D22F563A7003E3980 /* SyncQueue.swift */,
+			);
+			path = DispatchQueueHelper;
+			sourceTree = "<group>";
+		};
 		71BE869B5985960DE35B1145 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +249,7 @@
 				AFCA202620BE8D3B00E5C147 /* ContactsService */,
 				AF17F7C720BE769A003D82B1 /* Services */,
 				AF013D2B22EDB6F100B8E28B /* Handler */,
+				0436682A22F56327003E3980 /* DispatchQueueHelper */,
 				AF17F7A320BE7699003D82B1 /* Extension */,
 				AF17F7C520BE769A003D82B1 /* Resources */,
 				AF17F7A620BE7699003D82B1 /* Util */,
@@ -661,15 +681,19 @@
 				AF7069CE22DDFA560078D700 /* ContactsViewModelProtocol.swift in Sources */,
 				AF31FA1F20BECE31007F88B2 /* UIView.swift in Sources */,
 				AF17F7D420BE769A003D82B1 /* String.swift in Sources */,
+				0436682E22F563A7003E3980 /* SyncQueue.swift in Sources */,
 				AF013D2F22EDB73E00B8E28B /* PaginationHandlerProtocol.swift in Sources */,
 				AF31FA2120BED8CD007F88B2 /* Gender.swift in Sources */,
+				0436683222F5685D003E3980 /* DispatcheBaseModel.swift in Sources */,
 				AF17F77920BE6434003D82B1 /* BusinessContacts.xcdatamodeld in Sources */,
 				AF17F7D620BE769A003D82B1 /* RootViewManager.swift in Sources */,
 				AF17F7EB20BE769A003D82B1 /* ImageManager.swift in Sources */,
 				AF17F7EF20BE769A003D82B1 /* ParserHelper.swift in Sources */,
+				0436682C22F56398003E3980 /* AsyncQueue.swift in Sources */,
 				AF17F7E720BE769A003D82B1 /* ThemeColor.swift in Sources */,
 				AF013D2A22EDA9A100B8E28B /* PaginationModel.swift in Sources */,
 				AF17F7D520BE769A003D82B1 /* Reachability.swift in Sources */,
+				0436683022F563DF003E3980 /* DispatchProtocol.swift in Sources */,
 				AFCA201120BE8BBB00E5C147 /* ContactsModel.swift in Sources */,
 				AF17F7D320BE769A003D82B1 /* UIColor.swift in Sources */,
 				AF17F7EE20BE769A003D82B1 /* RequestFactory.swift in Sources */,
