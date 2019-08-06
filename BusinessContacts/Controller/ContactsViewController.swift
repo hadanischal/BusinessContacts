@@ -148,20 +148,22 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 
 }
 
-extension ContactsViewController {
+// MARK: - Lazy Loading of next list
 
-    // MARK: - Lazy Loading of cells
-    func loadImagesForOnscreenRows() {
-//        self.collectionView.reloadData()
+extension ContactsViewController: UIScrollViewDelegate {
+
+    func loadMoreButton() {
         self.showMoreButton.isHidden = false
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        loadImagesForOnscreenRows()
-    }
-
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate { loadImagesForOnscreenRows() }
+        let hasMore = self.collectionView.isNearBottomEdge(edgeOffset: 10.0)
+        hasMore ? self.loadMoreButton() : (self.showMoreButton.isHidden = true)
     }
+}
 
+extension UIScrollView {
+    func isNearBottomEdge(edgeOffset: CGFloat = 20.0) -> Bool {
+        return self.contentOffset.y + self.frame.size.height + edgeOffset > self.contentSize.height
+    }
 }
