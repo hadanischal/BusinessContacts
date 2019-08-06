@@ -50,7 +50,7 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
                 case .success(let list) :
                     self?.contacts = list
                     self?.contacts.sort(by: ContactsModel.Comparison.firstLastAscending)
-                    
+
                     self?.handellServerResponse()
                     //self?.dataSource?.data.value = contactList
                     completion?(Result.success(true))
@@ -76,8 +76,10 @@ class ContactsViewModel: ContactsViewModelProtocol, UpdateContactDelegate {
 
     private func getContactWithPagination() {
         self.paginationHandler.getContactWithPagination(withContact: contacts) { [weak self] paginatedContactList in
+            if paginatedContactList.count > 0 {
                 self?.paginatedContacts = paginatedContactList
                 self?.didSelectSegment(withContactType: nil)
+            }
         }
     }
 

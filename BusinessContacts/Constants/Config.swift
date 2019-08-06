@@ -9,5 +9,5 @@
 import Foundation
 
 struct Config {
-    static let pageSize: Int = 5
+    static let pageSize: Int = 20
 }
